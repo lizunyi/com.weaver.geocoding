@@ -115,6 +115,21 @@ public class Dictionary {
       }
     }
   }
+  
+  /**
+   * 批量加载停止词条
+   * @param words Collection<String>词条列表
+   */
+  public void addStopWords(Collection<String> words) {
+    if (words != null) {
+      for (String word : words) {
+        if (word != null) {
+          // 批量加载词条到主内存词典中
+          singleton._StopWordDict.fillSegment(word.trim().toLowerCase().toCharArray());
+        }
+      }
+    }
+  }
 
   /**
    * 批量移除（屏蔽）词条
@@ -129,6 +144,21 @@ public class Dictionary {
         }
       }
     }
+  }
+  
+  /**
+   * 批量移除停止词条
+   * @param words
+   */
+  public void disableStopWords(Collection<String> words) {
+	  if (words != null) {
+		  for (String word : words) {
+			  if (word != null) {
+				  // 批量屏蔽词条
+				  singleton._StopWordDict.disableSegment(word.trim().toLowerCase().toCharArray());
+			  }
+		  }
+	  }
   }
 
   /**
