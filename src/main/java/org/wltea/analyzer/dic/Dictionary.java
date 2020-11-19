@@ -116,6 +116,16 @@ public class Dictionary {
     }
   }
   
+  
+  /**
+   * 清除所有扩展词+停止词条
+   * @param words Collection<String>词条列表
+   */
+  public void clearAllWords() {
+	  _MainDict = new DictSegment((char) 0);
+	  _StopWordDict = new DictSegment((char) 0);
+  }
+  
   /**
    * 批量加载停止词条
    * @param words Collection<String>词条列表
